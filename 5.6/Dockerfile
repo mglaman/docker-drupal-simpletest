@@ -1,5 +1,5 @@
 # Drupal Commerce Docker Container
-FROM php:7-fpm
+FROM php:5.6-fpm
 MAINTAINER Matt Glaman <nmd.matt@gmail.com>
 
 # Memory Limit
@@ -31,7 +31,7 @@ ENV PATH $COMPOSER_HOME/vendor/bin:$PATH
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Set up the application directory
-WORKDIR /app
+WORKDIR /apps
 
 ENV PHP_SERVER "127.0.0.1:8080"
 ENV SIMPLETEST_DB "sqlite://tmp/site.sqlite"
