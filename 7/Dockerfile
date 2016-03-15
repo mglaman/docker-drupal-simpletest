@@ -39,5 +39,5 @@ ENV SIMPLETEST_BASE_URL "http://127.0.0.1:8080"
 ENV SIMPLETEST_GROUP "--all"
 
 
-COPY ../entrypoint.sh /
+COPY entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
