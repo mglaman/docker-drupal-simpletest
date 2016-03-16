@@ -3,7 +3,7 @@ FROM php:5.6-fpm
 MAINTAINER Matt Glaman <nmd.matt@gmail.com>
 
 # Memory Limit
-RUN echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/memory-limit.ini && \
+RUN echo "memory_limit=320M" > $PHP_INI_DIR/conf.d/memory-limit.ini && \
   echo "date.timezone=America/Chicago" > $PHP_INI_DIR/conf.d/date_timezone.ini && \
   echo "sendmail_path=/bin/true" > $PHP_INI_DIR/conf.d/sendmail.ini
 
@@ -31,11 +31,11 @@ ENV PATH $COMPOSER_HOME/vendor/bin:$PATH
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Set up the application directory
-WORKDIR /apps
+WORKDIR /app
 
 ENV PHP_SERVER "127.0.0.1:8080"
 ENV PHP_DOCROOT "/app"
-ENV SIMPLETEST_DB "sqlite://dev/shm/site.sqlite"
+ENV SIMPLETEST_DB "sqlite://localhost/tmp/site.sqlite"
 ENV SIMPLETEST_BASE_URL "http://127.0.0.1:8080"
 ENV SIMPLETEST_GROUP "--all"
 ENV SIMPLETEST_SCRIPT "/app/core/scripts/run-tests.sh"
