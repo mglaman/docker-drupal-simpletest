@@ -34,10 +34,11 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 WORKDIR /apps
 
 ENV PHP_SERVER "127.0.0.1:8080"
-ENV SIMPLETEST_DB "sqlite://tmp/site.sqlite"
+ENV PHP_DOCROOT "/app"
+ENV SIMPLETEST_DB "sqlite://dev/shm/site.sqlite"
 ENV SIMPLETEST_BASE_URL "http://127.0.0.1:8080"
 ENV SIMPLETEST_GROUP "--all"
-
+ENV SIMPLETEST_SCRIPT "/app/core/scripts/run-tests.sh"
 
 COPY entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
