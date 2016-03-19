@@ -35,7 +35,7 @@ WORKDIR /app
 
 ENV PHP_SERVER "127.0.0.1:8080"
 ENV PHP_DOCROOT "/app"
-ENV SIMPLETEST_DB "sqlite://localhost/tmp/site.sqlite"
+ENV SIMPLETEST_DB "sqlite://localhost//tmp/site.sqlite"
 ENV SIMPLETEST_BASE_URL "http://127.0.0.1:8080"
 ENV SIMPLETEST_GROUP "--all"
 ENV SIMPLETEST_SCRIPT "/app/core/scripts/run-tests.sh"

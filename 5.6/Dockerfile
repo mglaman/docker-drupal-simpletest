@@ -5,7 +5,8 @@ MAINTAINER Matt Glaman <nmd.matt@gmail.com>
 # Memory Limit
 RUN echo "memory_limit=320M" > $PHP_INI_DIR/conf.d/memory-limit.ini && \
   echo "date.timezone=America/Chicago" > $PHP_INI_DIR/conf.d/date_timezone.ini && \
-  echo "sendmail_path=/bin/true" > $PHP_INI_DIR/conf.d/sendmail.ini
+  echo "sendmail_path=/bin/true" > $PHP_INI_DIR/conf.d/sendmail.ini && \
+  echo "xdebug.var_display_max_depth=5" > $PHP_INI_DIR/conf.d/xdebug.ini
 
 # Packages
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -35,7 +36,7 @@ WORKDIR /app
 
 ENV PHP_SERVER "127.0.0.1:8080"
 ENV PHP_DOCROOT "/app"
-ENV SIMPLETEST_DB "sqlite://localhost/tmp/site.sqlite"
+ENV SIMPLETEST_DB "sqlite://localhost//tmp/site.sqlite"
 ENV SIMPLETEST_BASE_URL "http://127.0.0.1:8080"
 ENV SIMPLETEST_GROUP "--all"
 ENV SIMPLETEST_SCRIPT "/app/core/scripts/run-tests.sh"
