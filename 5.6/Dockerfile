@@ -3,10 +3,9 @@ FROM php:5.6-fpm
 MAINTAINER Matt Glaman <nmd.matt@gmail.com>
 
 # Memory Limit
-RUN echo "memory_limit=320M" > $PHP_INI_DIR/conf.d/memory-limit.ini && \
+RUN echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/memory-limit.ini && \
   echo "date.timezone=America/Chicago" > $PHP_INI_DIR/conf.d/date_timezone.ini && \
-  echo "sendmail_path=/bin/true" > $PHP_INI_DIR/conf.d/sendmail.ini && \
-  echo "xdebug.var_display_max_depth=5" > $PHP_INI_DIR/conf.d/xdebug.ini
+  echo "sendmail_path=/bin/true" > $PHP_INI_DIR/conf.d/sendmail.ini
 
 # Packages
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
